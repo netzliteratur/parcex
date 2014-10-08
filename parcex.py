@@ -62,6 +62,7 @@ class WarcFileEx(object):
                 if line.lower().startswith(b"warc-target-uri") and self.response_block:
                     _full_path = line.decode("utf-8").split(":", 1)[1].strip()
                     _file_name = os.path.basename(_full_path)
+                    _full_path = _full_path.replace(":", "")
                 if line == b"\r\n" and self.response_block and self.line_counter < 2:
                     self.line_counter += 1
                 if self.response_block and self.line_counter == 2:
