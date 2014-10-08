@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """
 parcer extracts content from warc files.
 
@@ -7,9 +7,23 @@ USAGE:
 
 WARC-FILE must be a warc file that conforms to:
     http://bibnum.bnf.fr/WARC/WARC_ISO_28500_version1_latestdraft.pdf
+
+OUTPUT:
+    Directory structure with the schema as root.
+    The structure maps the structure of the web resource.
+    Empty file names are named index.html.N, where N >= 0
 """
 import os
 import sys
+
+__author__ = "Steffen Fritz"
+__copyright__ = "Copyright 2014, DLA Marbach"
+__credits__ = ["Steffen Fritz"]
+__license__ = "The MIT License"
+__version__ = "0.2"
+__maintainer__ = "Steffen Fritz"
+__email__ = "fritz@dla-marbach.de"
+__status__ = "TESTING"
 
 
 class WarcFileEx(object):
@@ -28,13 +42,17 @@ class WarcFileEx(object):
 
     def reset_init(self):
         """
-        return init values
+        reset some init values after
+        leaving a response block
         """
         self.response_block = False
         self.line_counter = 0
 
     def parse_content(self):
         """
+        read line by line. identify response blocks.
+        extract path to file and file name. identify
+        data. write data to file.
         """
         with open(self.source_file, "rb") as fd:
             warc_version = fd.readline()
@@ -71,7 +89,7 @@ class WarcFileEx(object):
 
 def main():
     """
-    the main function is executed 
+    the main function is executed
     when parcer.py is executed.
     """
     source_file = sys.argv[1]
