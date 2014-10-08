@@ -93,6 +93,9 @@ def main():
     the main function is executed
     when parcer.py is executed.
     """
+    if len(sys.argv) != 2:
+        print("USAGE:\nparcex.py WARC-FILE\n")
+        sys.exit(0)
     source_file = sys.argv[1]
     warc_file = WarcFileEx(source_file)
     warc_file.parse_content()
