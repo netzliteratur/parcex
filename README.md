@@ -2,7 +2,7 @@
 parcer extracts content from warc files.
 
 #Usage
-./parcer.py WARC-FILE
+./parcex.py WARC-FILE
 
 WARC-FILE must be a warc file that conforms to
 
