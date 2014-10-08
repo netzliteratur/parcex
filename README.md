@@ -14,7 +14,7 @@ http://bibnum.bnf.fr/WARC/WARC_ISO_28500_version1_latestdraft.pdf
 - Empty file names are named index.html.N, where N >= 0
 
 #Requirements
-Python 2/3
+Python 2.7/3.x
 
 #Status
 Testing
