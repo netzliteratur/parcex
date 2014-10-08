@@ -3,7 +3,7 @@
 parcer extracts content from warc files.
 
 USAGE:
-    ./parcer.py WARC-FILE
+    ./parcex.py WARC-FILE
 
 WARC-FILE must be a warc file that conforms to:
     http://bibnum.bnf.fr/WARC/WARC_ISO_28500_version1_latestdraft.pdf
@@ -83,9 +83,14 @@ class WarcFileEx(object):
                         if line == b"\r\n":
                             pass
                         else:
-                            fd = open(os.path.dirname(_full_path) + "/" +_file_name, "ab")
-                            fd.write(line)
-                            fd.close()
+                            try:
+                                fd = open(os.path.dirname(_full_path) + "/" +_file_name, "ab")
+                                fd.write(line)
+                                fd.close()
+                            except IOError as err:
+                                print("error: There was an error creating or writing to a file.")
+                                print(str(err))
+                                sys.exit(1)
 
 
 def main():
