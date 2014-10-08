@@ -1,5 +1,5 @@
 #Description
-parcer extracts content from warc files.
+parcex extracts content from warc files.
 
 #Usage
 ./parcex.py WARC-FILE
